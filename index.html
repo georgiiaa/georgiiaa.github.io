@@ -34,6 +34,22 @@
   /* the one block of pure Klein */
   .band { height: 10px; background: var(--ikb); }
 
+  /* after Yves Klein, Ex-voto for Saint Rita (1961): pink, blue, gold */
+  .exvoto {
+    position: absolute; top: 34px; left: 32px;
+    display: flex; gap: 5px; padding: 5px;
+    border: 1px solid rgba(0,0,0,.08);
+  }
+  .intro-name span { transition: color .35s ease; }
+  .intro-name:hover .n1 { color: #d0217a; }
+  .intro-name:hover .n2 { color: var(--ikb); }
+  .intro-name:hover .n3 { color: #c49a33; }
+  .exvoto span { width: 20px; height: 30px; display: block; }
+  .ev-pink { background: radial-gradient(circle at 35% 30%, #e8408a, #c4146a 70%); }
+  .ev-blue { background: radial-gradient(circle at 35% 30%, #0a3dc4, #002FA8 70%); }
+  .ev-gold { background: linear-gradient(135deg, #b8902f 0%, #f1d884 35%, #c9a23e 55%, #f5e3a1 75%, #a8822a 100%); }
+  @media (max-width: 560px) { .exvoto { top: 22px; left: 18px; } .exvoto span { width: 14px; height: 22px; } }
+
   header { padding: 88px 0 56px; }
   .name {
     font-family: var(--sans);
@@ -183,7 +199,7 @@
 
   @media (max-width: 560px) {
     .fly-btn { right: 18px; bottom: 18px; }
-    header { padding: 56px 0 40px; }
+    header { padding: 84px 0 40px; }
     .lede { font-size: 24px; }
     .intro p { font-size: 17px; }
     .item { grid-template-columns: 1fr; }
@@ -194,12 +210,13 @@
 <body>
 
 <div class="band"></div>
+<div class="exvoto" aria-hidden="true"><span class="ev-pink"></span><span class="ev-blue"></span><span class="ev-gold"></span></div>
 
 <div class="wrap">
 
   <header>
     <div class="intro">
-      <h1 class="intro-name">Georgia Todd Barrett</h1>
+      <h1 class="intro-name"><span class="n1">Georgia</span> <span class="n2">Todd</span> <span class="n3">Barrett</span></h1>
       <p>I am interested in technology, philosophy, theology, linguistics, hermeneutics, ontology, temporality, and the ethics of machine intelligence.</p>
       <p>My scholastic background is interdisciplinary. I studied computer science and philosophy at NYU.</p>
       <p>I currently work in product at an AI company that develops voice agents.</p>
@@ -216,7 +233,7 @@
   <section id="work">
     <div class="label">Work</div>
     <!-- TODO: replace each href="#" with the repo or live URL -->
-    <a class="item" href="#">
+    <a class="item" href="https://transposition.vercel.app" target="_blank" rel="noopener">
       <span class="item-title">Transposition</span>
       <span class="item-meta">Web · Live</span>
       <span class="item-desc">A hermeneutic reading tool that sets scripture in its original Greek, Hebrew, and Aramaic, with English subordinated beneath — and shows what English loses.</span>
@@ -263,15 +280,16 @@
   <section id="books">
     <div class="label">Books that changed my life</div>
     <ul class="books">
-      <li><a href="https://bookshop.org/search?keywords=Zero+at+the+Bone+Christian+Wiman" target="_blank" rel="noopener"><em>Zero at the Bone</em></a>, Christian Wiman</li>
-      <li><a href="https://bookshop.org/search?keywords=Letters+to+Malcolm+C.S.+Lewis" target="_blank" rel="noopener"><em>Letters to Malcolm</em></a>, C.S. Lewis</li>
-      <li><a href="https://bookshop.org/search?keywords=Objectivity+Lorraine+Daston++Peter+Galison" target="_blank" rel="noopener"><em>Objectivity</em></a>, Lorraine Daston &amp; Peter Galison</li>
-      <li><a href="https://bookshop.org/search?keywords=East+of+Eden+John+Steinbeck" target="_blank" rel="noopener"><em>East of Eden</em></a>, John Steinbeck</li>
-      <li><a href="https://bookshop.org/search?keywords=Brain+Energy+Christopher+M.+Palmer" target="_blank" rel="noopener"><em>Brain Energy</em></a>, Christopher M. Palmer</li>
-      <li><a href="https://bookshop.org/search?keywords=The+Great+Divorce+C.S.+Lewis" target="_blank" rel="noopener"><em>The Great Divorce</em></a>, C.S. Lewis</li>
-      <li><a href="https://bookshop.org/search?keywords=The+Weight+of+Glory+C.S.+Lewis" target="_blank" rel="noopener"><em>The Weight of Glory</em></a>, C.S. Lewis</li>
-      <li><a href="https://bookshop.org/search?keywords=The+Varieties+of+Religious+Experience+William+James" target="_blank" rel="noopener"><em>The Varieties of Religious Experience</em></a>, William James</li>
-      <li><a href="https://bookshop.org/search?keywords=The+Undiscovered+Self+Carl+Jung" target="_blank" rel="noopener"><em>The Undiscovered Self</em></a>, C.G. Jung</li>
+      <li><a href="https://www.amazon.com/s?k=Zero+at+the+Bone+Christian+Wiman&i=stripbooks" target="_blank" rel="noopener"><em>Zero at the Bone: Fifty Entries Against Despair</em></a>, Christian Wiman</li>
+      <li><a href="https://www.amazon.com/s?k=Letters+to+Malcolm+C.S.+Lewis&i=stripbooks" target="_blank" rel="noopener"><em>Letters to Malcolm</em></a>, C.S. Lewis</li>
+      <li><a href="https://www.amazon.com/s?k=Objectivity+Lorraine+Daston++Peter+Galison&i=stripbooks" target="_blank" rel="noopener"><em>Objectivity</em></a>, Lorraine Daston &amp; Peter Galison</li>
+      <li><a href="https://www.amazon.com/s?k=East+of+Eden+John+Steinbeck&i=stripbooks" target="_blank" rel="noopener"><em>East of Eden</em></a>, John Steinbeck</li>
+      <li><a href="https://www.amazon.com/s?k=Brain+Energy+Christopher+M.+Palmer&i=stripbooks" target="_blank" rel="noopener"><em>Brain Energy</em></a>, Christopher M. Palmer</li>
+      <li><a href="https://www.amazon.com/s?k=The+Great+Divorce+C.S.+Lewis&i=stripbooks" target="_blank" rel="noopener"><em>The Great Divorce</em></a>, C.S. Lewis</li>
+      <li><a href="https://www.amazon.com/s?k=The+Weight+of+Glory+C.S.+Lewis&i=stripbooks" target="_blank" rel="noopener"><em>The Weight of Glory</em></a>, C.S. Lewis</li>
+      <li><a href="https://www.amazon.com/s?k=The+Varieties+of+Religious+Experience+William+James&i=stripbooks" target="_blank" rel="noopener"><em>The Varieties of Religious Experience</em></a>, William James</li>
+      <li><a href="https://www.amazon.com/s?k=The+Undiscovered+Self+Carl+Jung&i=stripbooks" target="_blank" rel="noopener"><em>The Undiscovered Self</em></a>, C.G. Jung</li>
+      <li><a href="https://www.amazon.com/s?k=Thoughts+of+a+Philosophical+Fighter+Pilot+Stockdale&i=stripbooks" target="_blank" rel="noopener"><em>Thoughts of a Philosophical Fighter Pilot</em></a>, James B. Stockdale</li>
     </ul>
   </section>
 
