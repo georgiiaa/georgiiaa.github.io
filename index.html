@@ -1,143 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Georgia Barrett</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georgia Todd Barrett</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
+<meta name="description" content="Georgia Todd Barrett — theology, language, and technology.">
+<style>
+  :root {
+    --ikb: #002FA8;
+    --ink: #111;
+    --mist: #8a8a8a;
+    --hair: #e6e6e6;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--serif);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--ikb); color: #fff; }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--ikb); outline-offset: 3px; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* the one block of pure Klein */
+  .band { height: 10px; background: var(--ikb); }
+
+  header { padding: 88px 0 56px; }
+  .name {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--ikb);
+  }
+  .lede {
+    font-size: 30px;
+    line-height: 1.35;
+    margin-top: 28px;
+    max-width: 600px;
+  }
+  .lede em { color: var(--ikb); font-style: italic; }
+  .intro p { font-size: 19px; line-height: 1.7; margin-bottom: 16px; max-width: 620px; }
+  .intro-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1; color: var(--ikb); margin-bottom: 28px; letter-spacing: .08em; text-transform: uppercase; }
+
+  nav {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  nav a {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--mist);
+    transition: color .15s;
+  }
+  nav a:hover { color: var(--ikb); }
+
+  section { padding: 56px 0; border-top: 1px solid var(--hair); }
+  .label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--ikb);
+    margin-bottom: 28px;
+  }
+
+  p.body { font-size: 18px; line-height: 1.75; margin-bottom: 18px; max-width: 620px; }
+
+  /* lists: work + writing */
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--hair);
+  }
+  .item:last-child { border-bottom: 1px solid var(--hair); }
+  #posts .item:last-child { border-bottom: none; }
+  .item-title { font-size: 19px; transition: color .15s; }
+  .item-meta {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--mist);
+    white-space: nowrap;
+    align-self: baseline;
+  }
+  .item-desc {
+    grid-column: 1 / -1;
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--mist);
+  }
+  a.item:hover .item-title { color: var(--ikb); }
+
+  .books { list-style: none; }
+  .books li { font-size: 18px; line-height: 2; }
+  .books a { transition: color .15s; }
+  .books a:hover { color: var(--ikb); }
+  .interests {
+    font-size: 18px;
+    line-height: 2;
+    font-style: italic;
+    max-width: 620px;
+  }
+  .interests span + span::before { content: " · "; color: var(--ikb); font-style: normal; }
+
+  .contact a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 16px 0;
+    border-top: 1px solid var(--hair);
+  }
+  .contact a:last-child { border-bottom: 1px solid var(--hair); }
+  .contact .k {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+  .contact .v { font-size: 17px; transition: color .15s; }
+  .contact a:hover .v { color: var(--ikb); }
+
+  footer {
+    padding: 48px 0 64px;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+
+  /* ── airplane button ── */
+  .fly-btn {
+    position: fixed; right: 28px; bottom: 28px; z-index: 50;
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 1px solid var(--ikb); background: #fff; color: var(--ikb);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .2s, color .2s;
+  }
+  .fly-btn:hover { background: var(--ikb); color: #fff; }
+  .fly-btn svg { width: 20px; height: 20px; transform: rotate(45deg); }
+
+  /* ── flight map overlay ── */
+  .overlay {
+    position: fixed; inset: 0; z-index: 100; background: #fff;
+    display: none; flex-direction: column; overflow-y: auto;
+  }
+  .overlay.open { display: flex; }
+  .ov-inner { width: 100%; max-width: 1040px; margin: 0 auto; padding: 40px 24px 48px; }
+  .ov-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+  .ov-close {
+    font-family: var(--sans); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--mist); background: none; border: none; cursor: pointer; padding: 0;
+  }
+  .ov-close:hover { color: var(--ikb); }
+  #flightCanvas { display: block; width: 100%; }
+  .ov-under {
+    display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 10px;
+    padding: 14px 0; border-top: 1px solid var(--hair); margin-top: 14px;
+    font-family: var(--sans); font-size: 11px; letter-spacing: .06em; color: var(--mist);
+  }
+  .ov-under b { font-weight: 400; color: var(--ikb); }
+  .ov-note { font-size: 17px; line-height: 1.7; max-width: 620px; margin-top: 28px; }
+
+  @media (max-width: 560px) {
+    .fly-btn { right: 18px; bottom: 18px; }
+    header { padding: 56px 0 40px; }
+    .lede { font-size: 24px; }
+    .intro p { font-size: 17px; }
+    .item { grid-template-columns: 1fr; }
+    .item-meta { white-space: normal; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-name">Georgia Barrett</span>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#writing">Writing</a></li>
-      <li><a href="#cv">CV</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<div class="band"></div>
 
-  <!-- HERO -->
-  <header class="hero">
-    <h1>Georgia<br>Barrett</h1>
-    <p class="tagline">Perpetual novice.</p>
+<div class="wrap">
+
+  <header>
+    <div class="intro">
+      <h1 class="intro-name">Georgia Todd Barrett</h1>
+      <p>I am interested in technology, philosophy, theology, linguistics, hermeneutics, ontology, temporality, and the ethics of machine intelligence.</p>
+      <p>My scholastic background is interdisciplinary. I studied computer science and philosophy at NYU.</p>
+      <p>I currently work in product at an AI company that develops voice agents.</p>
+      <p>My loves: C.S. Lewis (particularly his theological works, <em>Letters to Malcolm</em> and <em>God in the Dock</em>), Kierkegaard, Yves Klein, my dogs Elvis and Eleanor, mixed martial arts, aviation, etymology, walking, cinematography, Prague, notetaking, and my family.</p>
+    </div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#writing">Writing</a>
+      <a href="#books">Books</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="section-label">About</div>
-    <div class="section-body">
-      <p class="large">
-        I am an interdisciplinary thinker with a passion for charting paths through disciplines that seem unrelated — until they aren't.
-      </p>
-      <p>
-        My background spans philosophy, computer science, and the humanities, rooted in my time at NYU's Gallatin School of Individualized Study. I write about technology, ethics, and ideas on Substack. I care deeply about ethical AI, the nature of meaning, and the hidden architecture connecting seemingly separate fields.
-      </p>
-      <p>
-        When I'm not writing or thinking, I'm training in kickboxing and MMA, watching cinematography that moves me, or losing myself in a good science fiction novel. Everything has dimensions. I'm interested in all of them.
-      </p>
-      <p class="interests">
-        Philosophy &nbsp;·&nbsp; Theology &nbsp;·&nbsp; Technology &nbsp;·&nbsp; Ethical AI &nbsp;·&nbsp; Linguistics &nbsp;·&nbsp; Etymology &nbsp;·&nbsp; Aviation &nbsp;·&nbsp; Cinematography &nbsp;·&nbsp; Science Fiction &nbsp;·&nbsp; Writing &nbsp;·&nbsp; Martial Arts
-      </p>
+  <section id="work">
+    <div class="label">Work</div>
+    <!-- TODO: replace each href="#" with the repo or live URL -->
+    <a class="item" href="#">
+      <span class="item-title">Transposition</span>
+      <span class="item-meta">Web · Live</span>
+      <span class="item-desc">A hermeneutic reading tool that sets scripture in its original Greek, Hebrew, and Aramaic, with English subordinated beneath — and shows what English loses.</span>
+    </a>
+    <a class="item" href="#">
+      <span class="item-title">apophatic</span>
+      <span class="item-meta">NLP</span>
+      <span class="item-desc">An analyzer that detects the patterns of negative theology in text.</span>
+    </a>
+    <a class="item" href="#">
+      <span class="item-title">Overhead</span>
+      <span class="item-meta">ADS-B</span>
+      <span class="item-desc">An aircraft spotter for watching the sky over New York.</span>
+    </a>
+    <a class="item" href="#">
+      <span class="item-title">babel</span>
+      <span class="item-meta">Repo</span>
+      <span class="item-desc">Description to come.</span>
+    </a>
+  </section>
+
+  <section id="writing">
+    <div class="label">Writing</div>
+    <div id="posts">
+      <a class="item" href="https://digitaltheories.substack.com" target="_blank" rel="noopener">
+        <span class="item-title">Lossy</span>
+        <span class="item-meta">Digital Theories</span>
+        <span class="item-desc">Shannon entropy, C.S. Lewis's "Transposition," and the gap between human intent and machine rendering.</span>
+      </a>
+    </div>
+    <div style="margin-top:0">
+      <a class="item" href="https://digitaltheories.substack.com" target="_blank" rel="noopener">
+        <span class="item-title">Digital Theories</span>
+        <span class="item-meta">Substack →</span>
+      </a>
+      <a class="item" href="tiles-in-transit.pdf" target="_blank" rel="noopener">
+        <span class="item-title">Tiles in Transit</span>
+        <span class="item-meta">Book · PDF</span>
+        <span class="item-desc">Mosaics of the New York City subway.</span>
+      </a>
     </div>
   </section>
 
-  <!-- WRITING -->
-  <section id="writing" class="section">
-    <div class="section-label">Writing</div>
-    <div class="section-body">
-      <ul class="writing-list">
-        <li>
-          <a href="#" class="writing-item">
-            <span class="writing-title">Title of your essay or article</span>
-            <span class="writing-meta">Substack &middot; 2024</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="writing-item">
-            <span class="writing-title">Another piece you've written</span>
-            <span class="writing-meta">Substack &middot; 2024</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="writing-item">
-            <span class="writing-title">A third entry</span>
-            <span class="writing-meta">Publication &middot; 2023</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="writing-item">
-            <span class="writing-title">One more piece</span>
-            <span class="writing-meta">Publication &middot; 2023</span>
-          </a>
-        </li>
-      </ul>
+  <section id="books">
+    <div class="label">Books that changed my life</div>
+    <ul class="books">
+      <li><a href="https://bookshop.org/search?keywords=Zero+at+the+Bone+Christian+Wiman" target="_blank" rel="noopener"><em>Zero at the Bone</em></a>, Christian Wiman</li>
+      <li><a href="https://bookshop.org/search?keywords=Letters+to+Malcolm+C.S.+Lewis" target="_blank" rel="noopener"><em>Letters to Malcolm</em></a>, C.S. Lewis</li>
+      <li><a href="https://bookshop.org/search?keywords=Objectivity+Lorraine+Daston++Peter+Galison" target="_blank" rel="noopener"><em>Objectivity</em></a>, Lorraine Daston &amp; Peter Galison</li>
+      <li><a href="https://bookshop.org/search?keywords=East+of+Eden+John+Steinbeck" target="_blank" rel="noopener"><em>East of Eden</em></a>, John Steinbeck</li>
+      <li><a href="https://bookshop.org/search?keywords=Brain+Energy+Christopher+M.+Palmer" target="_blank" rel="noopener"><em>Brain Energy</em></a>, Christopher M. Palmer</li>
+      <li><a href="https://bookshop.org/search?keywords=The+Great+Divorce+C.S.+Lewis" target="_blank" rel="noopener"><em>The Great Divorce</em></a>, C.S. Lewis</li>
+      <li><a href="https://bookshop.org/search?keywords=The+Weight+of+Glory+C.S.+Lewis" target="_blank" rel="noopener"><em>The Weight of Glory</em></a>, C.S. Lewis</li>
+      <li><a href="https://bookshop.org/search?keywords=The+Varieties+of+Religious+Experience+William+James" target="_blank" rel="noopener"><em>The Varieties of Religious Experience</em></a>, William James</li>
+      <li><a href="https://bookshop.org/search?keywords=The+Undiscovered+Self+Carl+Jung" target="_blank" rel="noopener"><em>The Undiscovered Self</em></a>, C.G. Jung</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <div class="label">Contact</div>
+    <div class="contact">
+      <a href="mailto:georgiatoddbarrett@gmail.com"><span class="k">Email</span><span class="v">georgiatoddbarrett@gmail.com</span></a>
+      <a href="https://digitaltheories.substack.com" target="_blank" rel="noopener"><span class="k">Substack</span><span class="v">Digital Theories</span></a>
+            <a href="https://github.com/georgiiaa" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">github.com/georgiiaa</span></a>
     </div>
   </section>
 
-  <!-- CV -->
-  <section id="cv" class="section">
-    <div class="section-label">CV</div>
-    <div class="section-body">
-      <div class="cv-block">
-        <div class="cv-year">2022 – Now</div>
-        <div class="cv-role">
-          <div class="cv-title">Your Current Role</div>
-          <div class="cv-org">Organisation Name</div>
-        </div>
-      </div>
-      <div class="cv-block">
-        <div class="cv-year">2020 – 2022</div>
-        <div class="cv-role">
-          <div class="cv-title">Previous Role</div>
-          <div class="cv-org">Organisation Name</div>
-        </div>
-      </div>
-      <div class="cv-block">
-        <div class="cv-year">2018 – 2020</div>
-        <div class="cv-role">
-          <div class="cv-title">Earlier Role</div>
-          <div class="cv-org">Organisation Name</div>
-        </div>
-      </div>
-      <div class="cv-divider"></div>
-      <div class="cv-block">
-        <div class="cv-year">2014 – 2018</div>
-        <div class="cv-role">
-          <div class="cv-title">BA, Individualized Study</div>
-          <div class="cv-org">NYU Gallatin School</div>
-        </div>
-      </div>
-      <div class="cv-download">
-        <a href="cv.pdf" class="btn">Download full CV →</a>
-      </div>
+  <footer>© <span id="yr"></span> Georgia Todd Barrett</footer>
+</div>
+
+<button class="fly-btn" id="flyBtn" aria-label="Open my flight map">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+</button>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Every flight I've ever flown">
+  <div class="ov-inner">
+    <div class="ov-top">
+      <span class="label" style="margin:0">Every flight I've ever flown</span>
+      <button class="ov-close" id="ovClose">Close ✕</button>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section section--last">
-    <div class="section-label">Contact</div>
-    <div class="section-body">
-      <p class="large italic">Get in touch.</p>
-      <ul class="contact-list">
-        <li><a href="mailto:your@email.com">your@email.com</a></li>
-        <li><a href="https://substack.com/@yourprofile" target="_blank" rel="noopener">Substack</a></li>
-        <li><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://twitter.com/yourhandle" target="_blank" rel="noopener">Twitter / X</a></li>
-      </ul>
+    <canvas id="flightCanvas"></canvas>
+    <div class="ov-under">
+      <span>Now flying <b id="nowRoute">—</b> <span id="nowCities"></span></span>
+      <span id="routeCount"></span>
     </div>
-  </section>
+    <div class="ov-under" style="border-top:none;padding-top:0">
+      <span><b>104</b> flights · <b>56</b> routes · <b>43</b> airports · <b>126,328</b> miles</span>
+    </div>
+    <p class="ov-note">I'm an aviation enthusiast, and a pilot's license sits at the top of my bucket list. This is every flight I've taken, pulled from my logs. Still counting.</p>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <span>Georgia Barrett</span>
-    <span>© 2025</span>
-  </footer>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
+  // Pull the latest Substack posts; the static "Lossy" entry stays if this fails.
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=' +
+        encodeURIComponent('https://digitaltheories.substack.com/feed'))
+    .then(r => r.json())
+    .then(d => {
+      if (!d.items || !d.items.length) return;
+      const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+      document.getElementById('posts').innerHTML = d.items.slice(0, 5).map(p => {
+        const date = new Date(p.pubDate.replace(' ', 'T'))
+          .toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        return `<a class="item" href="${esc(p.link)}" target="_blank" rel="noopener">
+          <span class="item-title">${esc(p.title)}</span>
+          <span class="item-meta">${date}</span>
+        </a>`;
+      }).join('');
+    })
+    .catch(() => {});
+
+  /* ── Flight map ── */
+  const AP = {
+    ATL:[33.64,-84.43,'Atlanta'],SHV:[32.45,-93.83,'Shreveport'],LGA:[40.78,-73.87,'New York'],
+    EWR:[40.69,-74.17,'Newark'],JFK:[40.64,-73.78,'New York'],IAH:[29.99,-95.34,'Houston'],
+    SFO:[37.62,-122.38,'San Francisco'],CPH:[55.62,12.65,'Copenhagen'],PRG:[50.10,14.26,'Prague'],
+    MAD:[40.47,-3.56,'Madrid'],DFW:[32.90,-97.04,'Dallas'],LHR:[51.47,-0.45,'London'],
+    PMI:[39.55,2.74,'Palma'],AMS:[52.31,4.77,'Amsterdam'],UIO:[-0.13,-78.36,'Quito'],
+    MIA:[25.80,-80.29,'Miami'],AXA:[18.20,-63.06,'Anguilla'],CDG:[49.01,2.55,'Paris'],
+    LAX:[33.94,-118.41,'Los Angeles'],SEA:[47.45,-122.31,'Seattle'],CLT:[35.21,-80.94,'Charlotte'],
+    GPS:[-0.45,-90.27,'Galápagos'],RIC:[37.51,-77.32,'Richmond'],DCA:[38.85,-77.04,'Washington'],
+    PVD:[41.72,-71.43,'Providence'],BOS:[42.37,-71.01,'Boston'],DXB:[25.25,55.37,'Dubai'],
+    IST:[41.28,28.75,'Istanbul'],BUD:[47.43,19.26,'Budapest'],LGW:[51.15,-0.18,'London Gatwick'],
+    ORY:[48.72,2.38,'Paris Orly'],FRA:[50.04,8.56,'Frankfurt'],DTW:[42.21,-83.35,'Detroit'],
+    MEM:[35.04,-89.98,'Memphis'],VPS:[30.48,-86.53,'Destin'],ORD:[41.97,-87.91,'Chicago'],
+    FCA:[48.31,-114.26,'Glacier Park'],DEN:[39.86,-104.67,'Denver'],SAV:[32.13,-81.20,'Savannah'],
+    BQK:[31.26,-81.47,'Brunswick'],SJC:[37.36,-121.93,'San Jose'],JAX:[30.49,-81.69,'Jacksonville'],
+    IAD:[38.95,-77.46,'Washington Dulles']
+  };
+  const ROUTES = 'ATL-SHV-21 ATL-LGA-14 ATL-EWR-3 IAH-SHV-2 IAH-SFO-2 CPH-PRG-2 MAD-PRG-2 DFW-LHR-2 PMI-PRG-2 ATL-UIO-2 AMS-EWR-2 DFW-LGA-2 JFK-MIA-2 AXA-MIA-2 CDG-JFK-2 JFK-LAX-2 AMS-ATL-1 AMS-PRG-1 JFK-SEA-1 CLT-SHV-1 GPS-UIO-1 ATL-RIC-1 DCA-PVD-1 BOS-DFW-1 DFW-SJC-1 CLT-PVD-1 DFW-SEA-1 DXB-PRG-1 DXB-IST-1 IST-PRG-1 ATL-CDG-1 CDG-SFO-1 BUD-PRG-1 LGW-PRG-1 ORY-PRG-1 LHR-PRG-1 DFW-SHV-1 FRA-LHR-1 FRA-PRG-1 CDG-PRG-1 CDG-DTW-1 DTW-MEM-1 SHV-VPS-1 LGA-ORD-1 FCA-ORD-1 DEN-FCA-1 DEN-SAV-1 ATL-BQK-1 DFW-JFK-1 ATL-MIA-1 LGA-MIA-1 JFK-SAV-1 EWR-JAX-1 IAH-LGA-1 IAD-JFK-1 EWR-SFO-1'
+    .split(' ').map(s => { const [a,b,n] = s.split('-'); return { from:a, to:b, n:+n }; });
+  const LAND = [
+    [[49,-95.15],[49,-123.3],[47.6,-124.2],[46.2,-124],[42,-124.4],[40.4,-124.3],[37.8,-122.5],[34.4,-120.5],[32.5,-117.1],[32.5,-114.8],[31.3,-111],[31.3,-108.2],[29.7,-104.7],[26,-97.1],[26,-96],[28.1,-95.1],[29.7,-93],[30,-89.6],[30.5,-87.3],[31,-85],[30.3,-81.5],[25.1,-80.1],[24.5,-81.8],[25.2,-80.9],[29.5,-81.5],[32,-80.9],[34.8,-76.7],[35.6,-75.4],[37.8,-75.2],[38.5,-74.9],[40.5,-74],[42,-70.2],[44.8,-67],[49,-67.8]],
+    [[58.6,-3.4],[57.6,-1.8],[55.8,-2],[54.6,-1.1],[53.4,-3.2],[51.4,-3.4],[50,-5.7],[50.1,-5],[51.4,-2.9],[53,-4.2],[54.2,-4.6],[55.8,-5]],
+    [[55.4,-7.2],[54.4,-8.2],[51.4,-10],[51.5,-8.2],[53.3,-6.1],[54.7,-5.9]],
+    [[51.1,-2],[52.9,4.7],[53.4,7],[55.8,8.5],[57.7,10],[57.5,12.2],[55.7,12.6],[55,14.8],[56.2,15.8],[58.6,17],[60.2,18.5],[65.8,14.5],[70,25],[71,28],[70,30],[69,29],[65.5,14],[63.5,8],[62,5],[59,5],[57.8,7.5],[55.5,8],[54.5,8.4],[54.8,9.8],[54.2,10.2],[53.5,9],[54,10.5],[55,11],[55.5,12.2],[57.8,11.7],[55.8,8.5],[52.9,9],[52,8],[51.5,7],[51.1,4]],
+    [[44,0],[43.4,-1.8],[43.3,-8.4],[42,-9],[39,-9.5],[36.9,-9],[36.1,-5.6],[36.5,-4],[37.8,-1.5],[39.8,-0.2],[40.7,0.8],[42.3,3.2],[43.4,3.2]],
+    [[-5,-81],[-1.4,-78.5],[0,-91],[1,-78],[4,-77],[8,-77],[11,-73],[11,-63],[10,-62],[8,-60],[6,-61],[4,-52],[2,-50],[0,-50],[-1,-49],[-5,-35],[-8,-35],[-15,-39],[-23,-43],[-25,-48],[-34,-54],[-38,-57],[-34,-59],[-33,-70],[-29,-71],[-18,-70]]
+  ];
+  const LON0 = -130, LON1 = 62, LAT0 = -8, LAT1 = 62;
+  const IKB = '#002FA8';
+  const canvas = document.getElementById('flightCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, arcs, bg, cur = 0, t = 0, done = new Set(), raf = null;
+
+  const bez = (a, c, b, t) => ({ x:(1-t)*(1-t)*a.x+2*(1-t)*t*c.x+t*t*b.x, y:(1-t)*(1-t)*a.y+2*(1-t)*t*c.y+t*t*b.y });
+
+  function layout() {
+    const dpr = window.devicePixelRatio || 1;
+    W = canvas.parentElement.clientWidth;
+    H = Math.round(W * 0.5);
+    canvas.width = W * dpr; canvas.height = H * dpr; canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const proj = (lat, lon) => ({ x:(lon-LON0)/(LON1-LON0)*W, y:(1-(lat-LAT0)/(LAT1-LAT0))*H });
+    arcs = ROUTES.map(r => {
+      const p0 = proj(AP[r.from][0], AP[r.from][1]), p1 = proj(AP[r.to][0], AP[r.to][1]);
+      const dx = p1.x-p0.x, dy = p1.y-p0.y, len = Math.hypot(dx, dy) || 1, lift = Math.min(len*.28, H*.2);
+      return { ...r, p0, p1, cp:{ x:(p0.x+p1.x)/2 - dy/len*lift, y:(p0.y+p1.y)/2 + dx/len*lift } };
+    });
+    // static layer: land, ghost routes, airports
+    bg = document.createElement('canvas'); bg.width = canvas.width; bg.height = canvas.height;
+    const b = bg.getContext('2d'); b.setTransform(dpr, 0, 0, dpr, 0, 0);
+    LAND.forEach(ring => {
+      b.beginPath(); ring.forEach(([la, lo], i) => { const p = proj(la, lo); i ? b.lineTo(p.x, p.y) : b.moveTo(p.x, p.y); });
+      b.closePath(); b.fillStyle = '#f5f6fb'; b.fill(); b.strokeStyle = '#e6e6e6'; b.lineWidth = .7; b.stroke();
+    });
+    arcs.forEach(a => { b.beginPath(); b.moveTo(a.p0.x, a.p0.y); b.quadraticCurveTo(a.cp.x, a.cp.y, a.p1.x, a.p1.y); b.strokeStyle = 'rgba(0,47,168,.09)'; b.lineWidth = .8; b.stroke(); });
+    Object.keys(AP).forEach(k => { const p = proj(AP[k][0], AP[k][1]); b.beginPath(); b.arc(p.x, p.y, 2, 0, 7); b.fillStyle = 'rgba(0,47,168,.45)'; b.fill(); });
+  }
+
+  function frame() {
+    t += 0.007;
+    if (t >= 1) { done.add(cur); t = 0; cur = (cur + 1) % arcs.length; if (!cur) done.clear(); }
+    ctx.clearRect(0, 0, W, H);
+    ctx.drawImage(bg, 0, 0, W, H);
+    done.forEach(i => { const a = arcs[i]; ctx.beginPath(); ctx.moveTo(a.p0.x, a.p0.y); ctx.quadraticCurveTo(a.cp.x, a.cp.y, a.p1.x, a.p1.y); ctx.strokeStyle = `rgba(0,47,168,${.25 + Math.min(a.n/21,1)*.55})`; ctx.lineWidth = .9 + a.n/21*1.2; ctx.stroke(); });
+    const a = arcs[cur];
+    ctx.beginPath();
+    for (let s = 0; s <= 40; s++) { const p = bez(a.p0, a.cp, a.p1, t*s/40); s ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }
+    ctx.strokeStyle = IKB; ctx.lineWidth = 1.5; ctx.stroke();
+    const p = bez(a.p0, a.cp, a.p1, t), q = bez(a.p0, a.cp, a.p1, Math.min(t + .01, 1));
+    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(Math.atan2(q.y - p.y, q.x - p.x));
+    ctx.fillStyle = IKB; ctx.font = '14px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('✈', 0, 0);
+    ctx.restore();
+    document.getElementById('nowRoute').textContent = `${a.from} → ${a.to}`;
+    document.getElementById('nowCities').textContent = `· ${AP[a.from][2]} → ${AP[a.to][2]}`;
+    document.getElementById('routeCount').textContent = `Route ${cur + 1} of ${arcs.length}`;
+    raf = requestAnimationFrame(frame);
+  }
+
+  const overlay = document.getElementById('overlay');
+  function openMap() {
+    overlay.classList.add('open'); document.body.style.overflow = 'hidden';
+    layout(); cancelAnimationFrame(raf); frame();
+    document.getElementById('ovClose').focus();
+  }
+  function closeMap() {
+    overlay.classList.remove('open'); document.body.style.overflow = '';
+    cancelAnimationFrame(raf); document.getElementById('flyBtn').focus();
+  }
+  document.getElementById('flyBtn').addEventListener('click', openMap);
+  document.getElementById('ovClose').addEventListener('click', closeMap);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeMap(); });
+  window.addEventListener('resize', () => { if (overlay.classList.contains('open')) layout(); });
+</script>
 </body>
 </html>
